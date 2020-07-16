@@ -2,19 +2,47 @@ const scrapedin = require('scrapedin');
 const fs = require('fs');
 const Papa = require('papaparse');
 
-const cookie = fs.readFileSync('./cookie.txt');
+const inputDir = './input/';
+
+const linkedinCookieFileName = inputDir + 'cookie.txt';
+const cookie = fs.readFileSync(linkedinCookieFileName);
+if (!fs.existsSync(linkedinCookieFileName)) {
+	console.log(
+		`${linkedinCookieFileName} is missing. Please make sure it exists in the ${inputDir} directory.`
+	);
+	process.exit(1);
+}
 const scrapedinOptions = {
 	cookies: JSON.parse(cookie),
 };
 
-let inputDir = './input/';
-let inputFileName = inputDir + 'input.csv';
-let inputFile = fs.readFileSync(inputFileName, 'utf8');
-let emailFormatFileName = inputDir + 'email_format.txt';
-let devRolesFileName = inputDir + 'dev_jobs.txt';
+const inputFileName = inputDir + 'input.csv';
+if (!fs.existsSync(inputFileName)) {
+	console.log(
+		`${inputFileName} is missing. Please make sure it exists in the ${inputDir} directory.`
+	);
+	process.exit(1);
+}
+const inputFile = fs.readFileSync(inputFileName, 'utf8');
 
-let outputDir = './output/';
-let outputFileName = outputDir + `output.txt`;
+const emailFormatFileName = inputDir + 'email_format.txt';
+if (!fs.existsSync(emailFormatFileName)) {
+	console.log(
+		`${emailFormatFileName} is missing. Please make sure it exists in the ${inputDir} directory.`
+	);
+	process.exit(1);
+}
+
+const devRolesFileName = inputDir + 'dev_jobs.txt';
+if (!fs.existsSync(devRolesFileName)) {
+	console.log(
+		`${devRolesFileName} is missing. Please make sure it exists in the ${inputDir} directory.`
+	);
+	process.exit(1);
+}
+
+const outputDir = './output/';
+const outputFileName = outputDir + `output.txt`;
 
 const papaOptions = {
 	header: true,
