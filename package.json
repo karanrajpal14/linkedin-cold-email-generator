@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "papaparse": "^5.2.0",
+    "scrapedin": "^1.0.20"
+  }
 }
