@@ -76,7 +76,7 @@ const generateEmail = (currentRow, email, fetchedData) => {
 			currentRoleStartDate.getFullYear()
 		);
 		let currentRoleMonth = setDefaultIfUndefined(
-			currentRoleStartDate.getMonth().toString().padStart(2, '0')
+			(currentRoleStartDate.getMonth() + 1).toString().padStart(2, '0')
 		);
 		let latestDegree = setDefaultIfUndefined(
 			fetchedData.educations['0'].degree
